@@ -50,7 +50,6 @@ This strategy assumes prices tend to revert to their mean after extreme movement
 
 - ✅ Portfolio Equity Curve
 - ✅ Bollinger Bands with trade signals
-- ⬜ Drawdown and Sharpe not yet implemented
 
 ---
 
