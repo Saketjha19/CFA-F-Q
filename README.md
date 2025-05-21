@@ -1,109 +1,58 @@
 # 📊 FnQ Induction Task – Mean Reversion Strategy (Track 1)
 
-This project implements a **Mean Reversion Trading Strategy** using OHLCV data for **Reliance Industries (RELIANCE.NS)**. It was developed for the FnQ Induction Task to demonstrate knowledge of trading systems, quantitative analysis, and risk management.
+This repository contains a Mean Reversion trading strategy applied to **Reliance Industries (RELIANCE.NS)** stock. The implementation is part of the FnQ Induction Task and demonstrates data handling, strategy design, and backtesting for Indian equities.
 
 ---
 
 ## 📌 Problem Statement
 
-Design and backtest a statistically robust, risk-managed trading strategy using Indian equity data. The strategy should be:
-- Logically sound
-- Well-structured
-- Thoroughly documented
-- Evaluated using proper performance metrics
+Design and backtest a logically sound, risk-managed, and statistically robust trading strategy using Indian OHLCV data. Evaluate its performance using relevant quantitative metrics.
 
 ---
 
 ## ⚙️ Strategy Overview
 
-We use a **Bollinger Bands-based Mean Reversion Strategy**:
-- **Buy Signal:** Price crosses below the lower Bollinger Band
-- **Sell Signal:** Price crosses back above the 20-day Simple Moving Average (SMA)
-- Includes basic volatility filtering and avoids low-volume environments
+The strategy is based on **Bollinger Bands** to capture mean-reverting price behavior:
+- **Buy Signal**: Price drops below the lower Bollinger Band
+- **Sell Signal**: Price crosses above the 20-day Simple Moving Average (Middle Band)
+
+This strategy assumes prices tend to revert to their mean after extreme movements.
 
 ---
 
 ## 🧠 Logic Breakdown
 
-| Component          | Description |
-|-------------------|-------------|
-| **Indicator**      | Bollinger Bands (20-day SMA, ±2 std dev) |
-| **Entry Rule**     | Close price < Lower Bollinger Band |
-| **Exit Rule**      | Close price > Middle Band (SMA) |
-| **Position Size**  | Fixed capital per trade (no leverage) |
-| **Backtest Logic** | Buy/Sell on next day open after signal |
+| Component        | Description                                  |
+|------------------|----------------------------------------------|
+| **Stock**         | Reliance Industries (RELIANCE.NS)            |
+| **Indicator**     | Bollinger Bands (20-day SMA, ±2 std dev)     |
+| **Buy Rule**      | Close price < Lower Band                     |
+| **Sell Rule**     | Close price > 20-day SMA                     |
+| **Capital**       | ₹1,00,000 initial capital                    |
+| **Position Size** | Floor division of capital by entry price     |
+| **Execution**     | Entry/Exit at next day open                  |
 
 ---
 
-## 🗂️ Folder Structure
+## 📈 Backtest Results
 
-```
-FnQ-MeanReversion-Strategy/
-├── data/                   # Raw OHLCV data for Reliance
-├── notebooks/              # Jupyter notebook with strategy implementation
-├── reports/                # PDF technical report with charts and analysis
-├── results/                # Equity curve, drawdown plots, trade charts
-├── requirements.txt        # Python dependencies
-├── README.md               # This file
-└── .gitignore              # Common exclusions
-```
+- **Final Portfolio Value**: ₹1,15,737
+- **Cumulative Return**: +15.7%
+- **Number of Trades**: 27
+- **Win Rate**: 56%
+- **Average Holding Period**: Varies (based on signal)
 
----
-
-## 📈 Performance Metrics
-
-| Metric              | Description |
-|---------------------|-------------|
-| **Cumulative Return**   | Total return over the period |
-| **Annualized Return**   | Annualized equivalent of total return |
-| **Sharpe Ratio**        | Risk-adjusted return vs volatility |
-| **Sortino Ratio**       | Downside-risk-adjusted return |
-| **Max Drawdown**        | Largest portfolio loss from peak |
-| **Win Rate**            | % of profitable trades |
-| **Profit Factor**       | Total profit / total loss |
-| **Benchmark Comparison**| NIFTY50 or SENSEX comparison |
-
-(*Calculated in the notebook*)
+> Note: Sharpe Ratio, Max Drawdown, and Sortino Ratio can be added in future versions.
 
 ---
 
 ## 📊 Visualizations
-- ✅ Price chart with Bollinger Bands & trades
-- ✅ Equity curve
-- ✅ Drawdown plot
-- ✅ Rolling Sharpe ratio (optional)
+
+- ✅ Portfolio Equity Curve
+- ✅ Bollinger Bands with trade signals
+- ⬜ Drawdown and Sharpe not yet implemented
 
 ---
 
-## 🚀 How to Run
 
-1. Clone the repository
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-3. Run the notebook:
-   ```
-   notebooks/mean_reversion_strategy.ipynb
-   ```
 
----
-
-## 📚 Resources Used
-- [Investopedia – Bollinger Bands](https://www.investopedia.com/terms/b/bollingerbands.asp)
-- [Yahoo Finance API via yfinance](https://pypi.org/project/yfinance/)
-- FnQ Induction Task PDF
-
----
-
-## 👤 Author
-
-*Your Name Here*  
-IIM/College Name, Year  
-[GitHub Profile](https://github.com/yourusername)
-
----
-
-## ✅ Status
-
-🎯 Final Submission Ready – Includes Code, Report, Metrics & Visuals
